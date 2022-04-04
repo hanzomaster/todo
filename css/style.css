@@ -148,3 +148,45 @@ input:checked + label {
 		background-color: rgba(255, 255, 255, 0.4);
 	}
 }
+
+button {
+	background: none;
+	border: 0px;
+	color: #888;
+	font-size: 15px;
+	font-weight: bold;
+	width: 60px;
+	margin: 15px 0 0;
+	cursor: pointer;
+}
+
+button:hover {
+	color: #43575e;
+}
+
+input[type='text'] {
+	margin: 0;
+	font-size: 18px;
+	line-height: 18px;
+	border: 1px solid #ddd;
+	background: #bfbf9e;
+	border-radius: 6px;
+	color: #888;
+}
+
+input[type='text']:focus {
+	color: #333;
+}
+
+label[for='new-item'] {
+	display: grid;
+	justify-content: center;
+	padding: 15px 0px 15px 0px;
+	margin: 0 0 20px;
+}
+
+input#new-item {
+	float: left;
+	width: 50%;
+	margin-left: 25%;
+}
