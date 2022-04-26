@@ -38,7 +38,6 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
-	counter-reset: done-items undone-items;
 }
 
 h2 {
@@ -69,16 +68,8 @@ h2::after {
 	order: 1;
 }
 
-.done::after {
-	content: ' (' counter(done-items) ')';
-}
-
 .undone {
 	order: 3;
-}
-
-.undone::after {
-	content: ' (' counter(undone-items) ')';
 }
 
 /* hide inputs offscreen, but at the same vertical positions as the correpsonding labels, so that tabbing scrolls the viewport as expected */
@@ -88,12 +79,10 @@ input {
 	margin: 0 0 -53px -9999px;
 	order: 4;
 	outline: none;
-	counter-increment: undone-items;
 }
 
 input:checked {
 	order: 2;
-	counter-increment: done-items;
 }
 
 label {
@@ -182,11 +171,61 @@ label[for='new-item'] {
 	display: grid;
 	justify-content: center;
 	padding: 15px 0px 15px 0px;
-	margin: 0 0 20px;
+	margin: 20px 0 20px;
 }
 
 input#new-item {
 	float: left;
 	width: 50%;
 	margin-left: 25%;
+}
+
+h3 {
+	text-align: center;
+}
+
+.add-item {
+	display: flex;
+	align-items: center;
+}
+
+.button {
+	position: relative;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	left: 75%;
+}
+
+.button:after {
+	content: '';
+	position: absolute;
+	transform: translate(-50%, -50%);
+	height: 4px;
+	width: 50%;
+	background: #095776;
+	top: 50%;
+	left: 50%;
+}
+
+.button:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #095776;
+	height: 50%;
+	width: 4px;
+}
+
+.button:hover:before,
+.button:hover:after {
+	background: #fff;
+	transition: 0.2s;
+}
+
+.button:hover {
+	background-color: #095776;
+	transition: 0.2s;
 }

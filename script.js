@@ -1,4 +1,4 @@
-const addButton = document.getElementsByTagName('button')[0]
+const addButton = document.getElementsByClassName('button')[0]
 const inputs = document.getElementsByTagName('input')
 const input = document.getElementById('new-item')
 const itemsList = document.getElementsByClassName('items')
