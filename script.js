@@ -4,18 +4,22 @@ const input = document.getElementById('new-item')
 const itemsList = document.getElementsByClassName('items')
 
 addButton.addEventListener('click', () => {
-	if (input.value !== '') {
-		const newItem = document.createElement('input')
-		newItem.setAttribute('type', 'checkbox')
-		newItem.setAttribute('id', `item${inputs.length}`)
+  if (input.value !== '') {
+    const newItem = document.createElement('input')
+    newItem.setAttribute('type', 'checkbox')
+    newItem.setAttribute('id', `item${inputs.length}`)
 
-		const newLabel = document.createElement('label')
-		newLabel.setAttribute('for', `item${inputs.length}`)
-		newLabel.innerText = input.value
+    const newLabel = document.createElement('label')
+    newLabel.setAttribute('for', `item${inputs.length}`)
+    newLabel.innerText = input.value
 
-		itemsList[0].appendChild(newItem)
-		itemsList[0].appendChild(newLabel)
+    itemsList[0].appendChild(newItem)
+    itemsList[0].appendChild(newLabel)
 
-		input.value = ''
-	}
+    input.value = ''
+
+    const updatedTodo = JSON.parse(localStorage.getItem('todo')) || []
+    updatedTodo.push(input.value)
+    localStorage.setItem('todo', JSON.stringify(updatedTodo))
+  }
 })
