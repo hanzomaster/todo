@@ -32,6 +32,17 @@ const input = document.getElementById('new-item')
 const itemsList = document.getElementsByClassName('items')
 const checkboxes = document.querySelectorAll('input[type=checkbox]')
 
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('click', () => {
+    const updatedTodo = JSON.parse(localStorage.getItem('todo')) || []
+    const index = updatedTodo.findIndex(
+      item => item.title === checkbox.nextElementSibling.innerText
+    )
+    updatedTodo[index].completed = checkbox.checked
+    localStorage.setItem('todo', JSON.stringify(updatedTodo))
+  })
+})
+
 addButton.addEventListener('click', () => {
   if (input.value !== '') {
     const newItem = document.createElement('input')
@@ -51,15 +62,4 @@ addButton.addEventListener('click', () => {
 
     input.value = ''
   }
-})
-
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('click', () => {
-    const updatedTodo = JSON.parse(localStorage.getItem('todo')) || []
-    const index = updatedTodo.findIndex(
-      item => item.title === checkbox.nextElementSibling.innerText
-    )
-    updatedTodo[index].completed = checkbox.checked
-    localStorage.setItem('todo', JSON.stringify(updatedTodo))
-  })
 })
